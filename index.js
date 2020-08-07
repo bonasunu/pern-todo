@@ -54,7 +54,22 @@ app.put("/api/todos/:id", async (req, res) => {
       [description, id]
     )
 
-    res.json("Updated")
+    res.json("Updated!")
+  } catch(err) {
+    console.log(err.message)
+  }
+})
+
+app.delete("/api/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params
+
+    await pool.query(
+      "DELETE FROM todo WHERE todo_id = $1",
+      [id]
+    )
+
+    res.json("TODO successfully deleted!")
   } catch(err) {
     console.log(err.message)
   }
