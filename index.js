@@ -44,6 +44,22 @@ app.post("/api/todos", async (req, res) => {
   }
 })
 
+app.put("/api/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params
+    const { description } = req.body
+
+    await pool.query(
+      "UPDATE todo SET description = $1 WHERE todo_id = $2", 
+      [description, id]
+    )
+
+    res.json("Updated")
+  } catch(err) {
+    console.log(err.message)
+  }
+})
+
 app.listen(5000, () => {
   console.log('App listening on port 5000')
 })
