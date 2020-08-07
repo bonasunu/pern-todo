@@ -1,0 +1,26 @@
+{
+  "name": "pern-todo",
+  "version": "1.0.0",
+  "description": "TODO restful API using Node, Express, Postgres",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonasunu/pern-todo.git"
+  },
+  "author": "Bonaventura Sunu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bonasunu/pern-todo/issues"
+  },
+  "homepage": "https://github.com/bonasunu/pern-todo#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
