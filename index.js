@@ -5,11 +5,29 @@ const pool = require('./db')
 app.use(express.json())
 
 app.get("/api/todos", async (req, res) => {
-  const allTodos = await pool.query(
+  try {
+    const allTodos = await pool.query(
     "SELECT * FROM todo"
-  )
+    )
 
-  res.json(allTodos.rows)
+    res.json(allTodos.rows)
+  } catch(err) {
+    console.log(err.message)
+  }
+})
+
+app.get("/api/todos/:id", async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const todo = await pool.query(
+      "SELECT * FROM todo WHERE todo_id = $1", [id]
+      )
+
+    res.json(todo.rows)
+  } catch(err) {
+    console.log(err.message)
+  }
 })
 
 app.post("/api/todos", async (req, res) => {
