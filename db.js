@@ -1,9 +1,14 @@
-const Pool = require('pg').Pool
+const Pool = require('pg-pool')
+const config = require('./utils/config')
+
+const USER = config.USER
+const PASSWORD = config.PASSWORD
+const DATABSE = config.DATABASE
 
 const pool = new Pool({
-  user: 'postgres',
-  password: 'aaaaa',
-  database: 'todo_db',
+  user: USER,
+  password: PASSWORD,
+  database: DATABSE,
   host: 'localhost',
   port: 5432
 })

@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const pool = require('./db')
+const config = require('./utils/config')
 
 app.use(express.json())
 
@@ -75,6 +76,6 @@ app.delete("/api/todos/:id", async (req, res) => {
   }
 })
 
-app.listen(5000, () => {
-  console.log('App listening on port 5000')
+app.listen(config.PORT, () => {
+  console.log(`App listening on port ${config.PORT}`)
 })
