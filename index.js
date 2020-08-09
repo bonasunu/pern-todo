@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const pool = require('./db')
+const pool = require('./db.config')
 const config = require('./utils/config')
 
 app.use(express.json())
