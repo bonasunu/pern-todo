@@ -16,7 +16,11 @@ todoRoutes.get("/:id", async (req, res) => {
     "SELECT * FROM todo WHERE todo_id = $1", [id]
     )
 
-  res.json(todo.rows)
+  if (todo.rows.length > 0) {
+    res.json(todo.rows)
+  } else {
+    res.status(404).send({ error: "invalid data"})
+  }
 })
 
 todoRoutes.post("/", async (req, res) => {
