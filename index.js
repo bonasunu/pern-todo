@@ -1,11 +1,17 @@
-const express = require('express')
 const app = require('./app')
-const http = require('http')
+const https = require('https')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
+const fs = require('fs')
 
-const server = http.createServer(app)
+const port = config.PORT || 3000
 
-server.listen(config.PORT, () => {
-  logger.info(`App listening on port ${config.PORT}`)
+const option = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem'),
+}
+const server = https.createServer(option, app)
+
+server.listen(port, () => {
+  logger.info(`App listening on port ${port}`)
 })
